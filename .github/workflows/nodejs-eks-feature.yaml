@@ -14,8 +14,8 @@ env:
   component: ${{ inputs.component }}
 jobs:
   build-nodejs:
-    runs-on: ubuntu-latest
-
+    # runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, roboshop, nodejs]
     steps:
     - name: Checkout code
       uses: actions/checkout@v3 #this are like plugins in jenkins
