@@ -1,4 +1,4 @@
-name: nodejs-eks-ci
+name: nodejs-eks-feature
 
 on:
   workflow_call:
@@ -11,13 +11,10 @@ on:
         type: string
 
 jobs:
-  build-test-deploy:
+  build-nodejs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Read version
         run: |
           echo "Project: ${{ inputs.project }}"
