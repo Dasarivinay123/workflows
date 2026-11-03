@@ -1,4 +1,6 @@
+
 name: nodejs-eks-ci
+
 on:
   workflow_call:
     inputs:
@@ -8,9 +10,10 @@ on:
       component:
         required: true
         type: string
+
 jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: read version
-        uses: echo "read version from package.json"
+        run: echo "read version from package.json"
