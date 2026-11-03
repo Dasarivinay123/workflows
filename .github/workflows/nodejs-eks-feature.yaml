@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Read version
         run: |
-         echo project "${{ inputs.project }} component: ${{ inputs.component }}"
+          echo "Project: ${{ inputs.project }}"
+          echo "Component: ${{ inputs.component }}" 
