@@ -9,13 +9,21 @@ on:
       component:
         required: true
         type: string
-
+env:
+  project: ${{ inputs.project }}
+  component: ${{ inputs.component }}
 jobs:
   build-nodejs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Read version
-        run: |
-          echo "Project: ${{ inputs.project }}"
-          echo "Component: ${{ inputs.component }}" 
+    - name: Checkout code
+      uses: actions/checkout@v3 #this are like plugins in jenkins
+
+    - name: list files
+      run: ls -l
+      
+    - name: Read version
+      run: |
+        echo "Project: ${{ inputs.project }}"
+        echo "Component: ${{ inputs.component }}" 
