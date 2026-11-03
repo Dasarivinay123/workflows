@@ -1,4 +1,3 @@
-
 name: nodejs-eks-ci
 
 on:
@@ -14,6 +13,10 @@ on:
 jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: read version
-        run: echo "read version from package.json"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Read version
+        run: echo "Reading version from package.json"
