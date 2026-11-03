@@ -35,3 +35,5 @@ jobs:
 
     - name: print version
       run: echo "version is ${{ steps.version.outputs.version }}"
+    - name: Unit-tests
+      run: npm test
