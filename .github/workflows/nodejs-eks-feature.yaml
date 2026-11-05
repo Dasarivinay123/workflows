@@ -44,9 +44,9 @@ env:
   project: ${{ inputs.project }}
   component: ${{ inputs.component }}
   aws_region: us-east-1
-  acc_id: "160885265516"
-  registry: 160885265516.dkr.ecr.us-east-1.amazonaws.com
-  org: daws-90s
+  acc_id: "039077527503"
+  registry: 039077527503.dkr.ecr.us-east-1.amazonaws.com
+  org: daws90s
 
 jobs:
   build-test-deploy:
@@ -133,7 +133,7 @@ jobs:
       #     fi
       - name: status-library-scan
         if: steps.library-scan.outcome == 'success' || steps.library-scan.outcome == 'failure'
-        uses: daws-90s/workflows/.github/actions/commit-status@main
+        uses: Dasarivinay123/workflows/.github/actions/commit-status@main
         with:
           state: ${{ steps.library-scan.outcome }}
           context: library-scan
@@ -197,7 +197,7 @@ jobs:
           if-no-files-found: ignore
       - name: status-trivy-scan
         if: steps.trivy-scan-image.outcome == 'success' || steps.trivy-scan-image.outcome == 'failure'
-        uses: daws-90s/workflows/.github/actions/commit-status@main
+        uses: Dasarivinay123/workflows/.github/actions/commit-status@main
         with:
           state: ${{ (steps.trivy-scan-image.outcome == 'success' && steps.trivy-scan-dockerfile.outcome == 'success') && 'success' || 'failure' }}
           context: trivy-scan
@@ -210,7 +210,7 @@ jobs:
           docker push ${registry}/${project}/${component}:${{ steps.version.outputs.app_version }}
       - name: status-push-image
         if: steps.push-image.outcome == 'success' || steps.push-image.outcome == 'failure'
-        uses: daws-90s/workflows/.github/actions/commit-status@main
+        uses: Dasarivinay123/workflows/.github/actions/commit-status@main
         with:
           state: ${{ steps.push-image.outcome }}
           context: push-image
@@ -245,7 +245,7 @@ jobs:
           echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: status-update-config
         if: steps.gitops-update.outcome == 'success' || steps.gitops-update.outcome == 'failure'
-        uses: daws-90s/workflows/.github/actions/commit-status@main
+        uses: Dasarivinay123/workflows/.github/actions/commit-status@main
         with:
           state: ${{ steps.gitops-update.outcome }}
           context: update-config
