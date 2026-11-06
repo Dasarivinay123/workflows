@@ -46,7 +46,7 @@ env:
   aws_region: us-east-1
   acc_id: "039077527503"
   registry: 039077527503.dkr.ecr.us-east-1.amazonaws.com
-  org: daws90s
+  org: Dasarivinay123
 
 jobs:
   build-test-deploy:
