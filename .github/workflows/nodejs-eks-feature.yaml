@@ -50,9 +50,7 @@ env:
 
 jobs:
   build-test-deploy:
-    runs-on:
-      group: roboshop
-      labels: nodejs-dev
+    runs-on: [self-hosted, Linux, X64, nodejs-dev]
     permissions:
       statuses: write
     # contents: write
